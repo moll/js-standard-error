@@ -58,6 +58,10 @@ describe("StandardError", function() {
       stack[1].must.include("index_test.js")
       stack[2].must.not.include("index_test.js")
     })
+
+    it("must set stack from object", function() {
+      new ChildError({stack: "OMG"}).stack.must.equal("OMG")
+    })
   })
 
   describe(".prototype.toString", function() {
