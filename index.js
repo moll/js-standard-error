@@ -21,6 +21,5 @@ StandardError.prototype = Object.create(Error.prototype, {
   constructor: {value: StandardError, configurable: true, writable: true}
 })
 
-// Set name explicitly for cases where the StandardError function name above
-// gets minified.
+// Set name explicitly for when the code gets minified.
 StandardError.prototype.name = "StandardError"
