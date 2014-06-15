@@ -1,4 +1,4 @@
-## Unreleased
+## 1.1.0 (Jun 15, 2014)
 - Allows overwriting the `stack` property if given in the object:
 
   ```javascript
