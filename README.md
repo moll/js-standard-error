@@ -84,6 +84,16 @@ example. First, that's the proper way to subclass in JavaScript and second,
 StandardError.js depends on that to know which functions to skip in the stack
 trace.
 
+#### Name
+
+StandardError.js finds out the name (`err.name`) of your subclassed error from
+its constructor function. However, if you minify your code, you can also set or
+change it explicitly:
+
+```javascript
+ChildError.prototype.name = "FallacyError"
+```
+
 ### Adding behavior to your subclass of StandardError
 
 Now that you've inherited, you can, for example, customize stringifying by

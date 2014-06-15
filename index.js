@@ -1,3 +1,5 @@
+var has = Object.hasOwnProperty
+var proto = Object.getPrototypeOf
 module.exports = StandardError
 
 function StandardError(msg, props) {
@@ -7,11 +9,17 @@ function StandardError(msg, props) {
 
   // Name has to be an own property (or on the prototype a single step up) for
   // the stack to be printed with the correct name.
-  this.name = props && props.name || this.constructor.name
-  Error.captureStackTrace(this, this.constructor)
   if (props) for (var key in props) this[key] = props[key]
+  if (!has.call(this, "name"))
+    this.name = has.call(proto(this), "name")? this.name : this.constructor.name
+
+  if (!("stack" in this)) Error.captureStackTrace(this, this.constructor)
 }
 
 StandardError.prototype = Object.create(Error.prototype, {
   constructor: {value: StandardError, configurable: true, writable: true}
 })
+
+// Set name explicitly for cases where the StandardError function name above
+// gets minified.
+StandardError.prototype.name = "StandardError"
