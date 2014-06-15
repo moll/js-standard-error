@@ -124,8 +124,8 @@ About
 **[Andri Möll](http://themoll.com)** typed this and the code.  
 [Monday Calendar](https://mondayapp.com) supported the engineering work.
 
-If you find StandardError.js needs improving, please don't hesitate to type to me now
-at [andri@dot.ee][email] or [create an issue online][issues].
+If you find StandardError.js needs improving, please don't hesitate to type to
+me now at [andri@dot.ee][email] or [create an issue online][issues].
 
 [email]: mailto:andri@dot.ee
 [issues]: https://github.com/moll/js-standard-error/issues
