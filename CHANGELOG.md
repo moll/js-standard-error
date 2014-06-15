@@ -31,6 +31,9 @@
   don't need to set `name` explicitly on your subclasses and can depend on
   StandardError.js finding it out from the constructor function.
 
+- Uses `Error.captureStackTrace` only if available, so it'll work in non-V8
+  JavaScript engines.
+
 ## 1.0.0 (May 1, 2014)
 - First standard release.  
   There are now [15 competing standards](https://xkcd.com/927/)!

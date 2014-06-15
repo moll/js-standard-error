@@ -1,5 +1,6 @@
 var has = Object.hasOwnProperty
 var proto = Object.getPrototypeOf
+var trace = Error.captureStackTrace
 module.exports = StandardError
 
 function StandardError(msg, props) {
@@ -13,7 +14,7 @@ function StandardError(msg, props) {
   if (!has.call(this, "name"))
     this.name = has.call(proto(this), "name")? this.name : this.constructor.name
 
-  if (!("stack" in this)) Error.captureStackTrace(this, this.constructor)
+  if (trace && !("stack" in this)) trace(this, this.constructor)
 }
 
 StandardError.prototype = Object.create(Error.prototype, {

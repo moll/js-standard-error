@@ -18,9 +18,8 @@ subclasses of `Error` for **custom error classes** with the correct `name` and
 - Serializes all expected properties when passing it to `JSON.stringify`.  
   Did you know that the default `Error` object serializes to an empty object
   (`{}`)?
-- Given that StandardError.js depends on V8's `Error.captureStackTrace` (V8 is
-  used in Node.js), it will likely not work in all browsers. Yet. If you need
-  this, please let me know by [creating a GitHub issue][issues].
+- Works both in Node.js and browsers and sets the stack trace via
+  `Error.captureStackTrace` where available.
 
 
 Installing
