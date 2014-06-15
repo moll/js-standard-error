@@ -7,7 +7,7 @@ function StandardError(msg, props) {
 
   // Name has to be an own property (or on the prototype a single step up) for
   // the stack to be printed with the correct name.
-  this.name = this.constructor.name
+  this.name = props && props.name || this.constructor.name
   Error.captureStackTrace(this, this.constructor)
   if (props) for (var key in props) this[key] = props[key]
 }

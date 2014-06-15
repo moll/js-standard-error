@@ -37,6 +37,10 @@ describe("StandardError", function() {
       new StandardError().name.must.equal("StandardError")
     })
 
+    it("must set name given emtpy object", function() {
+      new StandardError({}).name.must.equal("StandardError")
+    })
+
     it("must set name from constructor", function() {
       new ChildError().name.must.equal("ChildError")
     })
@@ -52,7 +56,12 @@ describe("StandardError", function() {
       stack[1].must.include("index_test.js")
     })
 
-    it("must set stack from constructor", function() {
+    it("must set stack given name from object", function() {
+      var stack = new StandardError({name: "UnknownError"}).stack.split(/\n\s*/)
+      stack[0].must.equal("UnknownError")
+    })
+
+    it("must set stack when subclassed", function() {
       var stack = new ChildError().stack.split(/\n\s*/)
       stack[0].must.equal("ChildError")
       stack[1].must.include("index_test.js")
